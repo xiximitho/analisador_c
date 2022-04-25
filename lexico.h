@@ -6,16 +6,16 @@
 
 #include "gtk-4.0/gtk/gtk.h"
 
-void parse(char *str);
+void parse(gchar *str);
 
-bool ehSimbolo(char ch);
-bool identificadorValido(char *str);
-bool ehOperador(char ch);
-bool ehReservada(char *str);
-bool ehNumero(char *str);
-bool ehEspecial(char ch);
-bool ehRelacional(char esquerda, char direita);
-bool ehAtribuicao(char esquerda, char direita);
-char *subString(const char *baseStr, int l, int r);
+bool ehSimbolo(gchar ch);
+bool identificadorValido(gchar *str);
+bool ehOperador(gchar ch);
+bool ehReservada(gchar *str);
+bool ehNumero(gchar *str);
+bool ehEspecial(gchar ch);
+bool ehRelacional(gchar esquerda, gchar direita);
+bool ehAtribuicao(gchar esquerda, gchar direita);
+gchar *subString(const gchar *baseStr, int primeiro, int ultimo);
 
 #endif //LEXICO_H

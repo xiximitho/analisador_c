@@ -4,7 +4,7 @@
 #include "lexico.h"
 #include "string.h"
 
-bool ehSimbolo(char ch)
+bool ehSimbolo(gchar ch)
 {
     if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' || ch == '/' ||
         ch == ',' || ch == ';' || ch == '>' || ch == '<' || ch == '=' ||
@@ -13,7 +13,7 @@ bool ehSimbolo(char ch)
     }
     return false;
 }
-bool identificadorValido(char *str)
+bool identificadorValido(gchar *str)
 {
     if (str[0] == '0' || str[0] == '1' || str[0] == '2' || str[0] == '3' ||
         str[0] == '4' || str[0] == '5' || str[0] == '6' || str[0] == '7' ||
@@ -36,7 +36,7 @@ bool identificadorValido(char *str)
     }
     return true;
 }
-bool ehOperador(char ch)
+bool ehOperador(gchar ch)
 {
     if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '>' ||
         ch == '<' || ch == '=') {
@@ -45,14 +45,14 @@ bool ehOperador(char ch)
     return false;
 }
 
-bool ehEspecial(char ch)
+bool ehEspecial(gchar ch)
 {
     if (ch == '(' || ch == ')') {
         return true;
     }
     return false;
 }
-bool ehReservada(char *str)
+bool ehReservada(gchar *str)
 {
     if (strcmp(str, "if") == 0 || strcmp(str, "then") == 0 ||
         strcmp(str, "else") == 0 || strcmp(str, "case") == 0 ||
@@ -70,7 +70,7 @@ bool ehReservada(char *str)
     }
 }
 
-bool ehNumero(char *str)
+bool ehNumero(gchar *str)
 {
     int i;
     unsigned long len = strlen(str);
@@ -105,25 +105,25 @@ bool ehNumero(char *str)
     return true;
 }
 
-char *subString(const char *baseStr, int l, int r)
+gchar *subString(const gchar *baseStr, int primeiro, int ultimo)
 {
     int i;
-    char *str = (char *) malloc(sizeof(char) * (r - l + 2));
-    for (i = l; i <= r; i++) {
-        str[i - l] = baseStr[i];
-        str[r - l + 1] = '\0';
+    gchar *str = (gchar *) malloc(sizeof(gchar) * (ultimo - primeiro + 2));
+    for (i = primeiro; i <= ultimo; i++) {
+        str[i - primeiro] = baseStr[i];
+        str[ultimo - primeiro + 1] = '\0';
     }
     return str;
 }
 
 //Identifica \n e \t para ser trocado para espaço
 
-bool ehEspaco(char chr)
+bool ehEspaco(gchar chr)
 {
     return (chr == '\n' || chr == '\t');
 }
 
-int ehString(char *str)
+int ehString(gchar *str)
 {
     //0 - Nenhuma aspa dupla, 1 - Somente uma aspa dupla, 2 = Duas aspas duplas (String)
     short sum = 0;
@@ -134,7 +134,7 @@ int ehString(char *str)
     }
     return sum;
 }
-void parse(char *str)
+void parse(gchar *str)
 {
     int atual = 0, proximo = 0;
     unsigned long len = strlen(str);
@@ -175,7 +175,7 @@ void parse(char *str)
         else if (ehSimbolo(str[proximo]) == true && atual != proximo ||
             (proximo == len
                 && atual != proximo)) {
-            char *sub = subString(str, atual, proximo - 1);
+            gchar *sub = subString(str, atual, proximo - 1);
             // Verifica se a substring é uma palavra reservada, identificador, string ou numero
             if (ehReservada(sub) == true) {
                 g_print("%s PALAVRA_RESERVADA\n", sub);
@@ -203,7 +203,7 @@ void parse(char *str)
         }
     }
 }
-bool ehRelacional(char esquerda, char direita)
+bool ehRelacional(gchar esquerda, gchar direita)
 {
     if (esquerda == '<') {
         if (direita == '>') //Diferente
@@ -219,7 +219,7 @@ bool ehRelacional(char esquerda, char direita)
     return false;
 }
 
-bool ehAtribuicao(char esquerda, char direita)
+bool ehAtribuicao(gchar esquerda, gchar direita)
 {
     if (esquerda == ':') {
         if (direita == '=') //Atribuição

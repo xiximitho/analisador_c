@@ -13,3 +13,4 @@ add_definitions(${GTK4_CFLAGS_OTHER})
 add_executable(analisador_c main.c lexico.h lexico.c)
 
 target_link_libraries(analisador_c ${GTK4_LIBRARIES})
+install(TARGETS analisador_c)
