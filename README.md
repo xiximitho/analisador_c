@@ -35,3 +35,7 @@ add_executable(analisador_c main.c lexico.h lexico.c)
 target_link_libraries(analisador_c ${GTK4_LIBRARIES})
 install(TARGETS analisador_c)
 ```
+
+Exemplo:
+
+![exemplo](https://github.com/xiximitho/analisador_c/img/example.png)
