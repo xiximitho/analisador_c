@@ -15,7 +15,7 @@ Este projeto consiste em análisar palavras/caracteres recebidos em uma entrada 
 | Separadores | , ;                                                                                                                    |
 | Reservadas  | begin, end, if, then, else, case, for, in, and, or, const, string, double, float, int, long_int, short_int, bool, char |
 
-Utilizado o sistema de configuração de build CMake na versão 3.22, foi incluido o toolkit GTK4 (*GTK is a free and open-source cross-platform widget toolkit for creating graphical user interfaces.* https://www.gtk.org/). Sendo necessário sua instalação junto ao compilador GCC (https://gcc.gnu.org/) para compilação.
+Utilizado o sistema de configuração de build CMake na versão 3.22, foi incluido o toolkit GTK4 (*GTK is a free and open-source cross-platform widget toolkit for creating 
 
 ```cmake
 cmake_minimum_required(VERSION 3.22)
@@ -38,4 +38,4 @@ install(TARGETS analisador_c)
 
 Exemplo:
 
-![exemplo](https://github.com/xiximitho/analisador_c/img/example.png)
+![exemplo](https://github.com/xiximitho/analisador_c/blob/main/img/example.png)
